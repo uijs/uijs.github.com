@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Uijs by uijs</title>
+    <title>uijs.org by uijs</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -17,21 +17,14 @@
   <body>
 
       <header>
-        <h1>Uijs</h1>
+        <h1>uijs.org</h1>
         <p>A new take on a cross platform mobile UI toolkit for apps</p>
       </header>
 
       <div id="banner">
         <span id="logo"></span>
 
-        <a href="https://github.com/uijs/uijs" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/uijs/uijs/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/uijs/uijs/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
+        <a href="https://github.com/uijs" class="button fork"><strong>View On GitHub</strong></a>
       </div><!-- end banner -->
 
     <div class="wrapper">
@@ -51,11 +44,17 @@
 
 <p>We believe in the <a href="https://github.com/joyent/node/wiki/node-core-vs-userland">"batteries are not included"</a> philosophy employed in projects like <a href="http://nodejs.org">node.js</a>. For frontend libraries, this is even more critical because one would want to keep the footprint of their app as small as possible, so we didn't want to put too much into the core library.</p>
 
-<h2>Stability</h2>
+<p>uijs is licensed under the <a href="http://opensource.org/licenses/mit-license.php">The MIT License</a>.</p>
+
+<h4>Stability</h4>
 
 <p><a href="http://nodejs.org/api/documentation.html#documentation_stability_index">Stability</a> index: 1 - Experimental.</p>
 
 <p><strong>uijs</strong> is in early stages of development. It is still not mature enough for building actual apps with but we are looking for awesome hackers to join in and solve all those crazy problems. At this point (v0.0.1), uijs is not yet usable. We are building it as you read this (yes!). If you are interested in contributing or trying it out, you are more then welcome. Ping us at the <a href="mailto:uijs@googlegroups.com">uijs google group</a>.</p>
+
+<h1>Hello, uijs!</h1>
+
+<p>Getting started with uijs is pretty damn easy!</p>
 
 <h2>Installing uijs-devtools</h2>
 
@@ -63,21 +62,20 @@
 
 <p>To installl the <a href="https://github.com/uijs/uijs-devtools">development tools</a> globally, type:</p>
 
-<pre><code>$ npm install -g uijs-devtools
-</code></pre>
+<div class="highlight"><pre><span class="nv">$ </span>npm install -g uijs-devtools
+</pre></div>
 
 <p>Verify that they work:</p>
 
-<pre><code>$ uijs
-Development tools for uijs apps and modules (version 0.0.1)
-...
-</code></pre>
+<div class="highlight"><pre><span class="nv">$ </span>uijs
+Development tools <span class="k">for </span>uijs apps and modules <span class="o">(</span>version 0.0.1<span class="o">)</span>
+</pre></div>
 
 <p>Now, create a directory for your app/module and install uijs there:</p>
 
-<pre><code>$ cd hello-uijs
-$ npm install uijs
-</code></pre>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>hello-uijs
+<span class="nv">$ </span>npm install uijs
+</pre></div>
 
 <blockquote>
 <p><strong>Contributors</strong>: Instead of using <code>npm install</code> you can use <code>npm link</code> to reference a local copy of a the <code>uijs</code> module. Git clone <a href="https://github.com/eladb/uijs">https://github.com/uijs/uijs</a> into a local directory, run <code>npm link</code> within that directory and then you can use <code>npm link uijs</code> to install the <code>uijs</code> module as a link. You will see that <code>node_modules/uijs</code> will be a symlink instead of a real directory. You might also want to do the same for <code>uijs-core</code> and <code>uijs-controls</code> within the <code>uijs</code> repo. Loving npm!</p>
@@ -85,7 +83,7 @@ $ npm install uijs
 
 <p>This will create a <code>node_modules/uijs</code> directory with the uijs core module.</p>
 
-<h2>Hello, uijs!</h2>
+<h2>Export an app box from the main module</h2>
 
 <p><strong>uijs</strong> apps/modules are <a href="commonjs.org">CommonJS</a> libraries (<code>require</code>, <code>module.exports</code>) which export a uijs <a href="doc/box.md">box</a>. A box is a visual rectanglurly-bound element that can draw itself and may have child boxes. In uijs everything is a box.</p>
 
@@ -93,24 +91,26 @@ $ npm install uijs
 
 <p>Create a file named <code>hello.js</code>:</p>
 
-<pre><code>var uijs = require('uijs');
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">uijs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'uijs'</span><span class="p">);</span>
 
-var app = uijs.box();
+<span class="c1">// create an app. an app is a box. everything is a box.</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">uijs</span><span class="p">.</span><span class="nx">box</span><span class="p">();</span>
 
-app.add(uijs.label({
-  x: 10, y: 10, width: 200, height: 50,
-  text: 'Hello, uijs!',
-  color: '#1c8bdc',
-  size: 30,
-  bold: true,
-  shadowColor: '#ccc',
-  shadowOffsetX: 2,
-  shadowOffsetY: 2,
-  shadowBlur: 5,
-}));
+<span class="nx">app</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">uijs</span><span class="p">.</span><span class="nx">label</span><span class="p">({</span>
+  <span class="nx">x</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="nx">text</span><span class="o">:</span> <span class="s1">'Hello, uijs!'</span><span class="p">,</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="s1">'#1c8bdc'</span><span class="p">,</span>
+  <span class="nx">size</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="nx">bold</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">shadowColor</span><span class="o">:</span> <span class="s1">'#ccc'</span><span class="p">,</span>
+  <span class="nx">shadowOffsetX</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nx">shadowOffsetY</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nx">shadowBlur</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">}));</span>
 
-module.exports = app;
-</code></pre>
+<span class="c1">// export the app from the main module. the `uijs` devtool will expect this.</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</pre></div>
 
 <p>Basically what we did here is create an app box with a single child label (which is also a box). The label box has some properties like bounds (<code>x</code>, <code>y</code>, <code>width</code> and <code>height</code>), which is common to all boxes and some label-specific properties (<code>text</code>, <code>color</code>, etc). The function <code>box.add(child)</code> is used to add a child box to the app.</p>
 
@@ -120,10 +120,10 @@ module.exports = app;
 
 <p>Now, build and open the resulting html file:</p>
 
-<pre><code>$ uijs build hello.js
+<div class="highlight"><pre><span class="nv">$ </span>uijs build hello.js
 dist/hello.uijs.js created
 dist/hello.uijs.html created
-</code></pre>
+</pre></div>
 
 <p>The <code>uijs</code> program is the entry point for the <a href="https://github.com/uijs/uijs-devtools">devtools</a>. We use the <code>build</code> command, passing it <code>hello.js</code> as the input. Type <code>uijs -h</code> for usage.</p>
 
@@ -147,20 +147,20 @@ some other static file server.</li>
 
 <p>Passing <code>-w</code> to <code>uijs build</code> will start a file watch on the directory and automatically rebuild when your code changes, so you can work iteratively and refresh the browser window.</p>
 
-<pre><code>$ uijs build hello.js -w
-Watching /Users/eladb/hello-uijs exclude: [ 'dist', 'node_modules', '.git', /\.tmp.+/ ]
+<div class="highlight"><pre><span class="nv">$ </span>uijs build hello.js -w
+Watching hello-uijs exclude: <span class="o">[</span> <span class="s1">'dist'</span>, <span class="s1">'node_modules'</span>, <span class="s1">'.git'</span>, /<span class="se">\.</span>tmp.+/ <span class="o">]</span>
 dist/hello.uijs.js created
 dist/hello.uijs.html created    
 ...
-/Users/eladb/hello-uijs/hello.js changed. rebuilding
+hello.js changed. rebuilding
 dist/hello.uijs.js created
 dist/hello.uijs.html created    
 ...
-</code></pre>
+</pre></div>
 
 <p>Pretty useful!</p>
 
-<h2>Binding</h2>
+<h2>Binding attributes to functions</h2>
 
 <p>One of uijs's freakingly awesome features is it's binding system. You can read more about 
 it <a href="doc/binding.md">here</a>. Simply put, you can <code>bind</code> any box property to a function 
@@ -170,13 +170,13 @@ and <code>watch</code> any property for changes (even if they are bound to funct
 
 <p>Replace this:</p>
 
-<pre><code>  text: 'Hello, uijs!',
-</code></pre>
+<div class="highlight"><pre>  <span class="nx">text</span><span class="o">:</span> <span class="s1">'Hello, uijs!'</span><span class="p">,</span>
+</pre></div>
 
 <p>With this:</p>
 
-<pre><code>  text: uijs.bind(function() { return window.innerWidth + 'x' + window.innerHeight; }),
-</code></pre>
+<div class="highlight"><pre>  <span class="nx">text</span><span class="o">:</span> <span class="nx">uijs</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">+</span> <span class="s1">'x'</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">;</span> <span class="p">}),</span>
+</pre></div>
 
 <p>Now you should see something like this:</p>
 
@@ -190,108 +190,21 @@ and <code>watch</code> any property for changes (even if they are bound to funct
 
 <p>Execute:</p>
 
-<pre><code>$ uijs debug hello.js -w
-Watching /Users/eladb/hello-uijs exclude: [ 'dist', 'node_modules', '.git', /\.tmp.+/ ]
+<div class="highlight"><pre><span class="nv">$ </span>uijs debug hello.js -w
+Watching /Users/eladb/hello-uijs exclude: <span class="o">[</span> <span class="s1">'dist'</span>, <span class="s1">'node_modules'</span>, <span class="s1">'.git'</span>, /<span class="se">\.</span>tmp.+/ <span class="o">]</span>
 dist/hello.uijs.js created
 dist/hello.uijs.html created
-starting debugger for /Users/eladb/hello-uijs/dist/hello.uijs.js
+starting debugger <span class="k">for </span>dist/hello.uijs.js
 uijs debugger listening on port 5000
-</code></pre>
+</pre></div>
 
 <p>As you can see, the debugger is listening on port 5000. Now all you need to do is point your mobile device to <code>http://&lt;your-machine-ip-address&gt;:5000</code> and your app should show up.</p>
 
 <p>Since most mobile browsers do not have a console window, if you use <code>console.log</code> in your codebase, those logs will be outputed on the console of your host machine, making your life so much better.</p>
 
 <p>Since we used <code>-w</code>, the file watch will also work in this mode.</p>
-
-<h1>Samples</h1>
-
-<p>Samples are simple uijs apps. In order to open a sample, use <code>uijs build</code> (or <code>uijs debug</code>) with the sample file:</p>
-
-<p>For example:</p>
-
-<pre><code>$ cd samples
-$ uijs build interaction-sample.js
-dist/interaction-sample.uijs.js created
-dist/interaction-sample.uijs.html created
-$ open dist/interaction-sample.uijs.html
-</code></pre>
-
-<h1>Running Tests</h1>
-
-<p><code>npm test</code> will run all tests. These are the regression tests that should be executed before commiting code into the repository.</p>
-
-<p>We have two types of tests:</p>
-
-<ol>
-<li>Functional tests are located under <code>test/*.test.js</code>. <strong>Functional tests</strong> 
-are simply node.js scripts. If they exit with a non zero exit code, the test 
-failed.</li>
-<li>
-<em>This is broken</em>: Visual tests are located under <code>test/*.cantest.{js|png}</code>. <strong>Visual tests</strong> 
-use <a href="https://github.com/learnboost/node-canvas">node-canvas</a> and 
-<a href="https://github.com/eladb/node-cantest">cantest</a> and can be executed 
-using <code>cantest xxx.cantest.js</code>. Read more about visual tests in the 
-<a href="https://github.com/eladb/node-cantest/blob/master/README.md">cantest README</a> 
-file. To run visual tests, you will have to install <a href="http://cairographics.org/">cairo</a>. On a mac with <a href="http://mxcl.github.com/homebrew/">homebrew</a> just type <code>brew install cairo</code>.</li>
-</ol><p>Running all tests:</p>
-
-<pre><code>$ npm test
-&gt; uijs@0.0.1 test
-&gt; cd test &amp;&amp; ./run.sh
-
-Running catest tests
-Running functional tests
-</code></pre>
-
-<h2>Benchmarks</h2>
-
-<p>Benchmarks are uijs apps (export a <code>box</code>). All benchmarks are under the <code>benchmarks</code> directory.
-To run a benchmark, use the uijs devtool <code>bench</code> or <code>prof</code> commands. By default the benchmark will run for 5 seconds. If <code>prof</code> is used, it will show a profiler output.</p>
-
-<pre><code>$ cd benchmarks
-$ uijs bench the-box.js
-the-box.js 34303.2fps
-$ uijs prof the-box.js
-...
-... # benchmark results
-...
-the-box.js 36176.4fps
-</code></pre>
-
-<p>Note that since benchmarks are regular uijs apps, they can usually be also opened from the browser. The fps measurements will be outputed to the console.</p>
-
-<pre><code>$ cd benchmarks
-$ uijs debug the-jumping-box.js
-http://localhost:5000
-</code></pre>
-
-<h3>Results</h3>
-
-<p><em>All results are from MacBook Air 1.8 GHz i7 4GB</em></p>
-
-<pre><code>+---------------------------------+-------------------+
-| test               | b87c5582d2 | 8119a6f096        |
-+--------------------+------------+-------------------+
-| the-box.js         | 13,592fps  | 66,870fps (+491%) |
-| the-jumping-box.js | 141.4fps   | 1,398fps (+988%)  |
-+---------------------------------+-------------------+
-</code></pre>
-
-<h2>License</h2>
-
-<p>(The MIT License)</p>
-
-<p>Copyright (c) 2012 uijs.org and other uijs contributors</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
       <footer>
-        <p>Project maintained by <a href="https://github.com/uijs">uijs</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
